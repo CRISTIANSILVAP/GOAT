@@ -78,6 +78,21 @@ class TestlibrarycMethods(unittest.TestCase):
 
         fase2 = lc.fase((3, -1))
         self.assertAlmostEqual(fase2, math.atan(-1 / 3))
+print()
+# Definir amplitudes complejas para las rendijas
+# Amplitud al pasar por la rendija 1 (en forma polar)
+amplitud_rendija1 = lc.polarAcartesiano((1 / math.sqrt(2), 0))  # Amplitud de 1/sqrt(2) con fase 0
+
+# Amplitud al pasar por la rendija 2 (en forma polar)
+amplitud_rendija2 = lc.polarAcartesiano((1 / math.sqrt(2), math.pi))  # Amplitud de 1/sqrt(2) con fase pi
+
+# Sumar las amplitudes para obtener la interferencia
+amplitud_total = lc.suma(amplitud_rendija1, amplitud_rendija2)
+
+# Calcular la probabilidad total detectada (módulo al cuadrado de la amplitud total)
+probabilidad_total = lc.modulo1(amplitud_total) ** 2
+
+print(f"La probabilidad total detectada es: {probabilidad_total}")
 
 if __name__ == '__main__':
     unittest.main()
